@@ -1,0 +1,127 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "Spectre.Console/0.42.0": {
+        "type": "package",
+        "dependencies": {
+          "Wcwidth": "0.2.0"
+        },
+        "compile": {
+          "lib/net5.0/Spectre.Console.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Spectre.Console.dll": {}
+        }
+      },
+      "Wcwidth/0.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Wcwidth.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Wcwidth.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Spectre.Console/0.42.0": {
+      "sha512": "S7W1pHhcDOvzPQE4TJtQvkkF1/zflCvF5E7rYgHJXFVT/rnPZE8o7GmHJbckY7LUUAZ1OllUJ3E5BxBzCVg+wQ==",
+      "type": "package",
+      "path": "spectre.console/0.42.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net5.0/Spectre.Console.dll",
+        "lib/net5.0/Spectre.Console.xml",
+        "lib/netstandard2.0/Spectre.Console.dll",
+        "lib/netstandard2.0/Spectre.Console.xml",
+        "small-logo.png",
+        "spectre.console.0.42.0.nupkg.sha512",
+        "spectre.console.nuspec"
+      ]
+    },
+    "Wcwidth/0.2.0": {
+      "sha512": "H7no2W0vuLJTvSPanlrijtG3UdJNVoeWBOp2a5dJFVa2tqSQuP5GfbJw1xAtPG9agRW310nFTUUsyPz5tuVIxw==",
+      "type": "package",
+      "path": "wcwidth/0.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Wcwidth.dll",
+        "lib/netstandard2.0/Wcwidth.xml",
+        "wcwidth.0.2.0.nupkg.sha512",
+        "wcwidth.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "Spectre.Console >= 0.42.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\olivi\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator\\HeartBeatCalculator.csproj",
+      "projectName": "HeartBeatCalculator",
+      "projectPath": "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator\\HeartBeatCalculator.csproj",
+      "packagesPath": "C:\\Users\\olivi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\olivi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "dependencies": {
+          "Spectre.Console": {
+            "target": "Package",
+            "version": "[0.42.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

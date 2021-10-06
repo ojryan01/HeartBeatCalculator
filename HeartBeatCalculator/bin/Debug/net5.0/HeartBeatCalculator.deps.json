@@ -1,0 +1,59 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "HeartBeatCalculator/1.0.0": {
+        "dependencies": {
+          "Spectre.Console": "0.42.0"
+        },
+        "runtime": {
+          "HeartBeatCalculator.dll": {}
+        }
+      },
+      "Spectre.Console/0.42.0": {
+        "dependencies": {
+          "Wcwidth": "0.2.0"
+        },
+        "runtime": {
+          "lib/net5.0/Spectre.Console.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.42.0.0"
+          }
+        }
+      },
+      "Wcwidth/0.2.0": {
+        "runtime": {
+          "lib/netstandard2.0/Wcwidth.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.2.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HeartBeatCalculator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Spectre.Console/0.42.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S7W1pHhcDOvzPQE4TJtQvkkF1/zflCvF5E7rYgHJXFVT/rnPZE8o7GmHJbckY7LUUAZ1OllUJ3E5BxBzCVg+wQ==",
+      "path": "spectre.console/0.42.0",
+      "hashPath": "spectre.console.0.42.0.nupkg.sha512"
+    },
+    "Wcwidth/0.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-H7no2W0vuLJTvSPanlrijtG3UdJNVoeWBOp2a5dJFVa2tqSQuP5GfbJw1xAtPG9agRW310nFTUUsyPz5tuVIxw==",
+      "path": "wcwidth/0.2.0",
+      "hashPath": "wcwidth.0.2.0.nupkg.sha512"
+    }
+  }
+}

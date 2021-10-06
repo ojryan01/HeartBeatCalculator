@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "tUAAm7iEFyQer09pXeOkNXwFv4C25jrCeHKBO2QdIhs9DykBcwrWyavxRFBQbtl5PJ6e4Tc3qNMlFhvkLHRQpw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator\\HeartBeatCalculator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\olivi\\.nuget\\packages\\spectre.console\\0.42.0\\spectre.console.0.42.0.nupkg.sha512",
+    "C:\\Users\\olivi\\.nuget\\packages\\wcwidth\\0.2.0\\wcwidth.0.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}
