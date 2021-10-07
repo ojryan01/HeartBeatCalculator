@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeartBeatCalculator", "HeartBeatCalculator\HeartBeatCalculator.csproj", "{626ADE29-00D4-44E1-ADEB-71700E31E6F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeartBeatCalculator", "HeartBeatCalculator\HeartBeatCalculator.csproj", "{626ADE29-00D4-44E1-ADEB-71700E31E6F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeartBeatCalculator.Tests", "Tests\HeartBeatCalculator.Tests\HeartBeatCalculator.Tests.csproj", "{A4AF198A-A715-41D0-AF13-566BA976B5C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeartBeatCalculator.Tests", "Tests\HeartBeatCalculator.Tests\HeartBeatCalculator.Tests.csproj", "{A4AF198A-A715-41D0-AF13-566BA976B5C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeartBeatCalculator.Forms", "HeartBeatCalculator.Forms\HeartBeatCalculator.Forms.csproj", "{FA629346-2972-48DA-92C6-0ED42B5CAC47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A4AF198A-A715-41D0-AF13-566BA976B5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4AF198A-A715-41D0-AF13-566BA976B5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4AF198A-A715-41D0-AF13-566BA976B5C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA629346-2972-48DA-92C6-0ED42B5CAC47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA629346-2972-48DA-92C6-0ED42B5CAC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA629346-2972-48DA-92C6-0ED42B5CAC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA629346-2972-48DA-92C6-0ED42B5CAC47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

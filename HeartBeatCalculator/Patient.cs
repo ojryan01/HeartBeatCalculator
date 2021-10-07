@@ -60,14 +60,23 @@ namespace cardiacanalyzer
         public static void PlotECG() //when we create an object instance then it doesn't need to be static anymore?
 
         {
-            var canvas = new Canvas(16, 16);
-
+            var canvas = new Canvas(300, 300);
+           
             // Draw some shapes
             for (var i = 0; i < canvas.Width; i++)
             {
+
+
+                var plotx = i;
+                var ploty = Math.Ceiling(50 + 50*Math.Sin(i*(Math.PI / 180)));
+                Console.WriteLine($"{plotx}, {ploty}");
+
+                //straight line
+                canvas.SetPixel(plotx, (int)ploty, Color.Blue);
+                                                    
                 // Cross
-                canvas.SetPixel(i, i, Color.White);
-                canvas.SetPixel(canvas.Width - i - 1, i, Color.White);
+                //canvas.SetPixel(i, i, Color.White);
+                //canvas.SetPixel(canvas.Width - i - 1, i, Color.White);
 
                 // Border
                 canvas.SetPixel(i, 0, Color.Red);
