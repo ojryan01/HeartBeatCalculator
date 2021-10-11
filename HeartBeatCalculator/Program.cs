@@ -1,7 +1,7 @@
 ﻿using Spectre.Console;
 using System;
 
-namespace cardiacanalyzer
+namespace HeartBeatCalculator
 {
     class Program
     {
@@ -36,7 +36,7 @@ namespace cardiacanalyzer
                     break; //determine the heart rate by detecting the number of peaks over time and display a diagnosis
                 case "3":
                     Console.WriteLine("Graphing ECG data...");
-                    patient.PlotECG();
+                    EKGStudy.PlotECG();
                     break; //graphically display the data
                 case "4":
                     Console.WriteLine("Enter First Name:");
