@@ -14,7 +14,7 @@ namespace HeartBeatCalculator
 
             return new EKGStudy[]
             {
-                new EKGStudy(0, "Olivia", 12, {1,2,3,4})
+                //new EKGStudy(0, "Olivia", 12, new List {1,2,3,4})
             };
         }
     }

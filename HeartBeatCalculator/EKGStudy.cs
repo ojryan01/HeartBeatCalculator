@@ -1,6 +1,7 @@
 ﻿using Spectre.Console;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,16 +20,36 @@ namespace HeartBeatCalculator
 
         public int[] StudyData { get;  }
 
-        public EKGStudy(int studyID, string patientName, int duration, int[] studyData)
+        public EKGStudy(int studyID, string patientName, int duration, List<string> studyData)
 
         {
             this.StudyID = studyID;
             this.PatientName = patientName;
             this.Duration = duration;
-            this.StudyData = studyData;
+        }
+
+
+        //import data into list from CSV
+        public static List<string> ReadEKG()
+        {
+
+            Console.WriteLine("Enter the file path:");
+
+            string path = Console.ReadLine();
+
+            Console.WriteLine("Reading ECG data...");
+
+            List<string> studyData = File.ReadAllLines(path).ToList(); //read all lines only has a type of string. need to parse this into int values
+            
+            foreach(string i in studyData)
+            { 
+            Console.WriteLine(i);
+            }
+            return studyData;
         }
 
         [Obsolete]
+
         public static void PlotECG() //when we create an object instance then it doesn't need to be static anymore?
 
         {

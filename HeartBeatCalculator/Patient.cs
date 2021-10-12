@@ -1,20 +1,21 @@
 ﻿using Spectre.Console;
 using System;
+using System.Collections.Generic;
 
 namespace HeartBeatCalculator
 {
-    public class patient //classes are private by default so we need to make them publically accessible
+    public class Patient //classes are private by default so we need to make them publically accessible
     {
 
         //a constructor is a special kind of method, named with the class's name, executed each time an instance of the class is execute.
         //use ctor tab tab
 
-        public patient()
+        public Patient()
         {
 
         }
 
-        public patient(int PatientId)
+        public Patient(int PatientId)
         {
             PatientId = patientId;
         }
@@ -40,6 +41,7 @@ namespace HeartBeatCalculator
 
 
         public string LastName { get; set; }
+        public object PatientID { get; private set; }
 
         private int patientId;
         public int PatientId { get; private set; }
@@ -88,6 +90,23 @@ namespace HeartBeatCalculator
             if (string.IsNullOrWhiteSpace(FirstName)) isValid = false;
             return isValid;
 
+        }
+
+        public static List<Patient> Patients = new List<Patient>();
+
+        public static void AddPatient()
+        {
+            var patient = new Patient();
+            Console.WriteLine("Enter the first name:");
+            patient.FirstName = Console.ReadLine();
+            Console.WriteLine("Enter the last name:");
+            patient.LastName = Console.ReadLine();
+            patient.PatientID = Patients.IndexOf(patient); //assigns the patient id to the index in 
+            Patients.Add(patient); //Adds this new patient to the list. need to get rest of patient info and also automatically assign a patient ID
+
+            foreach (var Patient in Patients) //tryimg to print each patient info in the list
+                { Console.WriteLine(patient.FullName);
+                }
         }
 
         //importECG(); //import a data set for the selected patient?
