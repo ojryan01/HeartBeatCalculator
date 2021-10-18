@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HeartBeatCalculator
 {
-    public class EKGStudy
+    public class EKGStudy //this class should inherit info from patient.
 
     {
         public int StudyID { get; }
@@ -18,7 +18,7 @@ namespace HeartBeatCalculator
 
         public int Duration { get;  }
 
-        public int[] StudyData { get;  }
+        public List<int> StudyData { get;  }
 
         public EKGStudy(int studyID, string patientName, int duration, List<string> studyData)
 
@@ -48,6 +48,7 @@ namespace HeartBeatCalculator
             return studyData;
         }
 
+       
         [Obsolete]
 
         public static void PlotECG() //when we create an object instance then it doesn't need to be static anymore?
