@@ -1,6 +1,7 @@
 ﻿using Spectre.Console;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -40,12 +41,20 @@ namespace HeartBeatCalculator
             string path = Console.ReadLine();
 
             //user enters the sampling frequency in hertz
-            
+          
             Console.WriteLine("Enter the sample frequency in hertz:");
           
             string frequencyString = Console.ReadLine();
 
-            int frequency = Int32.Parse(frequencyString);
+            //some validation of user input (later we can make this it's own method or class
+
+            if (string.IsNullOrWhiteSpace(frequencyString))
+                throw new ArgumentException("Enter the sample frequency in hertz");
+
+            var success = int.TryParse(frequencyString, out int frequency);
+
+            if (!success || frequency < 0)
+                throw new ArgumentException("Frequency must be > 0");
 
             Console.WriteLine("Reading ECG data...");
 
@@ -74,7 +83,7 @@ namespace HeartBeatCalculator
             foreach (float i in studyData)
              {
 
-                if (i == 0) //simple zero crossing detection for a pur sine wave (going to need different algo for EKG
+                if (i == 0) //simple zero crossing detection for a pure sine wave (going to need different algo for EKG
                     {
                     pulseCounter += 1;   
                     } 
@@ -93,7 +102,8 @@ namespace HeartBeatCalculator
 
             return studyData;
         }
-        
+
+               
 
 
             [Obsolete]
