@@ -7,17 +7,12 @@ namespace HeartBeatCalculator
     public class Patient //classes are private by default so we need to make them publically accessible
     {
 
-        //a constructor is a special kind of method, named with the class's name, executed each time an instance of the class is execute.
+        //a constructor is a special kind of method, named with the class's name, executed each time an instance of the class is executed (i.e Patient patient  = new Patient). A default ctor is created if you don't do this.
         //use ctor tab tab
 
         public Patient()
         {
 
-        }
-
-        public Patient(int PatientId)
-        {
-            PatientId = patientId;
         }
 
         //long hand example of encapsulation shown below:
@@ -39,12 +34,8 @@ namespace HeartBeatCalculator
 
         //for the rest of the properties, we will use short hand encapsulation, where the backing field is set up autom-implemented behind the scenes 
 
-
         public string LastName { get; set; }
         public object PatientID { get; private set; }
-
-        private int patientId;
-        public int PatientId { get; private set; }
 
         public string FullName
         {
@@ -55,8 +46,6 @@ namespace HeartBeatCalculator
         }
 
         //DateType DateOfBirth { get; set; }
-
-        //string AnalyzeECG() { get; set; } //calculate heart rate and return if the patient is healthy, has bradycardia or tachycardia
 
         [Obsolete]
        
@@ -94,6 +83,8 @@ namespace HeartBeatCalculator
 
         public static List<Patient> Patients = new List<Patient>();
 
+        //Method to add a patient
+        
         public static void AddPatient()
         {
             var patient = new Patient();
@@ -101,17 +92,21 @@ namespace HeartBeatCalculator
             patient.FirstName = Console.ReadLine();
             Console.WriteLine("Enter the last name:");
             patient.LastName = Console.ReadLine();
-            patient.PatientID = Patients.IndexOf(patient); //assigns the patient id to the index in 
             Patients.Add(patient); //Adds this new patient to the list. need to get rest of patient info and also automatically assign a patient ID
-
-            foreach (var Patient in Patients) //tryimg to print each patient info in the list
-                { Console.WriteLine(patient.FullName);
-                }
+            patient.PatientID = Patients.IndexOf(patient); //assigns the patient id to the current index in the list
         }
 
-        //importECG(); //import a data set for the selected patient?
-
-        // we want to initialize an empty array that will populate with the ECG data which can then be analyzed for that patient double ecgData[] {get; set; } 
-
+        public static void ViewPatients()
+        {
+            foreach (var Patient in Patients)
+                {
+                Console.WriteLine("*****************");
+                Console.WriteLine($"Name: {Patient.FullName}");
+                Console.WriteLine($"Patient ID: {Patient.PatientID}");
+                Console.WriteLine($"Number of studies: 0"); //Want to access the number of studies associated with that patient
+                Console.WriteLine($"Studies:"); //access the list of study IDs
+                Console.WriteLine("*****************");
+            }
+        }
     }
 }

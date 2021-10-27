@@ -28,14 +28,15 @@ namespace HeartBeatCalculator
                 Console.WriteLine("2. Calculate heart rate");
                 Console.WriteLine("3. Graph ECG");
                 Console.WriteLine("4. Create new Patient");
-                Console.WriteLine("5. Quit");
+                Console.WriteLine("5. View all Patients");
+                Console.WriteLine("6. Quit");
 
                 userSelection = Console.ReadLine();
                 
                 switch (userSelection)
                 {
                     case "1":
-                        EKGStudy.ReadEKG();
+                        EKGStudyRepository.AddStudy();
                         Console.WriteLine("Press enter to return to main menu");
                         break;//Load ECG data from a csv file
                     case "2":
@@ -52,6 +53,10 @@ namespace HeartBeatCalculator
                         Console.WriteLine("Press enter to return to main menu");
                         break;
                     case "5":
+                        Patient.ViewPatients();
+                        Console.WriteLine("Press enter to return to main menu");
+                        break;
+                    case "6":
                         repeat = false;
                         break;
                 }

@@ -13,98 +13,93 @@ namespace HeartBeatCalculator
     public class EKGStudy //this class should inherit info from patient.
 
     {
-        public int StudyID { get; }
+        public int StudyID { get; set;  }
 
-        public string PatientName { get; }
+        public string PatientID { get; set; }
 
-        public int Duration { get; }
+        public int Duration { get; set; }
 
-        public List<float> StudyData { get; }
+        public List<float> StudyData { get; set; }
 
-        public EKGStudy(int studyID, string patientName, int duration, List<float> studyData)
+        
+        public EKGStudy()
 
         {
-            this.StudyID = studyID;
-            this.PatientName = patientName;
-            this.Duration = duration;
+
         }
 
+        //A method to calculate the heart rate for a given reading
 
-        //import data into list from CSV
-        public static List<float> ReadEKG()
+        public static double CalculateHeartRate( string studyId, List<float> studydata, int frequency )
         {
 
-            //user enters file path
+            Console.WriteLine("Enter the study ID");
+
+            studyId = Console.ReadLine();
             
-            Console.WriteLine("Enter the file path:");
-
-            string path = Console.ReadLine();
-
-            //user enters the sampling frequency in hertz
-          
-            Console.WriteLine("Enter the sample frequency in hertz:");
-          
-            string frequencyString = Console.ReadLine();
-
-            //some validation of user input (later we can make this it's own method or class
-
-            if (string.IsNullOrWhiteSpace(frequencyString))
-                throw new ArgumentException("Enter the sample frequency in hertz");
-
-            var success = int.TryParse(frequencyString, out int frequency);
-
-            if (!success || frequency < 0)
-                throw new ArgumentException("Frequency must be > 0");
-
-            Console.WriteLine("Reading ECG data...");
-
-            //logic to read the csv into a list of strings
-            
-            var reader = new StreamReader(File.OpenRead(path)); //read the file
-
-            List<string> studyDataString = new List<string>();
-
-            while (!reader.EndOfStream) //until we get to end of file
-                {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                    foreach (var item in values)
-                    {
-                        studyDataString.Add(item);
-                    }
-                }
-
-            List<float> studyData = studyDataString.Select( x => float.Parse(x)).ToList(); // Convert list of strings to list of floats
-
-            double duration = studyDataString.Count / frequency; // duration in seconds
-
             int pulseCounter = 0;
 
-            foreach (float i in studyData)
-             {
+       
+
+            double duration = studydata.Count / frequency; // duration in seconds
+
+            //Moving average calculation //ready to run and TEST
+
+            for (int i = 0; i < studydata.Count; i++)
+
+            { if (i < frequency)
+
+                {
+                    float intsum = studydata.Take(i).Sum(); // sum of first i members of study data list
+
+                    float intavg = intsum / (i + 1); // sum above divided by the number of samples so far
+
+                    if (studydata[i] > intavg + .25) //certain threshhold above the average is a peak TODO change study data list to two dimensional
+                    {
+                        pulseCounter += 1;
+                    }
+                }
+                else
+                {
+                    float intsum = studydata.Skip(i - (frequency / 2)).Take(frequency).Sum();     //here we need to say, if i is greater than the samples in one second, take the sum of the surrounding one second (i - frequency/2)
+                    float intavg = intsum / (i + 1); // sum above divided by the number of samples so far
+                    if (studydata[i] > intavg + .25) //certain threshhold above the average is a peak TODO change study data list to two dimensional
+                    {
+                        pulseCounter += 1;
+                    }
+
+                }
+            }
+
+            
+
+            
+
+            foreach (float i in studydata)
+            {
 
                 if (i == 0) //simple zero crossing detection for a pure sine wave (going to need different algo for EKG
-                    {
-                    pulseCounter += 1;   
-                    } 
+                {
+                    pulseCounter += 1;
+                }
 
                 Console.WriteLine(i);
-                
-             }
+
+            }
 
             var heartRate = 60 * pulseCounter / duration; //heartrate in beats per min
 
-            Console.WriteLine($"The study contains {studyDataString.Count} data points"); //verifying that all the data points got read into list
+            Console.WriteLine($"The study contains {studydata.Count} data points"); //verifying that all the data points got read into list
 
             Console.WriteLine($"The study duration is { duration } seconds"); //verifying that all the data points got read into list
 
             Console.WriteLine($"The average heart rate is { heartRate } beats per minute");
 
-            return studyData;
+            return heartRate;
+
         }
 
                
-
 
             [Obsolete]
 
