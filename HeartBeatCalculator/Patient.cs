@@ -7,7 +7,7 @@ namespace HeartBeatCalculator
     public class Patient //classes are private by default so we need to make them publically accessible
     {
 
-        //a constructor is a special kind of method, named with the class's name, executed each time an instance of the class is executed (i.e Patient patient  = new Patient). A default ctor is created if you don't do this.
+        //a constructor is a special kind of method, named with the class's name, executed each time an instance of the class is executed (i.e Patient patient  = new Patient). A default ctor is used when instantiating if you don't do this.
         //use ctor tab tab
 
         public Patient()
@@ -45,14 +45,14 @@ namespace HeartBeatCalculator
             }
         }
 
+        public List<EKGStudy> Studies;
+
         //DateType DateOfBirth { get; set; }
 
         [Obsolete]
        
 
         // Render the canvas
-
-        //int calculateHeartRate() { get; set; }
 
         //Display patient data by id
 

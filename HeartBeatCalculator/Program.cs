@@ -24,7 +24,7 @@ namespace HeartBeatCalculator
                 string userSelection;
 
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("1. Import ECG Data");
+                Console.WriteLine("1. Calculate heart rate");
                 Console.WriteLine("2. Calculate heart rate");
                 Console.WriteLine("3. Graph ECG");
                 Console.WriteLine("4. Create new Patient");
@@ -36,7 +36,7 @@ namespace HeartBeatCalculator
                 switch (userSelection)
                 {
                     case "1":
-                        EKGStudyRepository.AddStudy();
+                        EKGStudyRepository.AnalyzeEKG();
                         Console.WriteLine("Press enter to return to main menu");
                         break;//Load ECG data from a csv file
                     case "2":
