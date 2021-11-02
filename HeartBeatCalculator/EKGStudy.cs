@@ -17,7 +17,7 @@ namespace HeartBeatCalculator
 
         public int Age { get; set; }
 
-        public int Sex { get; set; }
+        public string Sex { get; set; }
 
         public List<float> StudyData { get; set; }
 
@@ -76,8 +76,7 @@ namespace HeartBeatCalculator
                     }
                 }
             }
-
-            ////simple zero crossing detection for a pure sine wave (going to need different algo for EKG
+            ////simple zero crossing detection for a pure sine wave (going to need different algo for EKG)
 
             //foreach (float i in studydata)
             //{
@@ -103,7 +102,32 @@ namespace HeartBeatCalculator
 
             return heartRate;
         }
-  
+
+        //A method to diagnose someone's heart rate based on sex, gender, age and the calculated heartrate
+
+        public static string Diagnose(double heartrate)
+        {
+            string diagnosis = "";
+
+            if (heartrate <= 60)
+            {
+                diagnosis = "bradycardia";
+            }
+
+            else if (heartrate > 60 && heartrate < 100)
+            {
+                diagnosis = "healthy";
+            }
+            else
+                 {
+                diagnosis = "tachycardia";
+                 }
+
+            Console.WriteLine($"Your diagnosis is: {diagnosis}");
+            return diagnosis;
+        }
+
+
         [Obsolete]
 
         public static void PlotECG() //when we create an object instance then it doesn't need to be static anymore?

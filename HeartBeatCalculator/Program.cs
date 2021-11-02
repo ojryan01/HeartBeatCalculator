@@ -40,10 +40,6 @@ namespace HeartBeatCalculator
                         Console.WriteLine("Press enter to return to main menu");
                         break;//Load ECG data from a csv file
                     case "2":
-                        Console.WriteLine("Calculating heart rate...");
-                        Console.WriteLine("Press enter to return to main menu");
-                        break; //determine the heart rate by detecting the number of peaks over time and display a diagnosis
-                    case "3":
                         Console.WriteLine("Graphing ECG data...");
                         EKGStudy.PlotECG();
                         Console.WriteLine("Press enter to return to main menu");

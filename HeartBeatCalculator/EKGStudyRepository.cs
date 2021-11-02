@@ -26,8 +26,6 @@ namespace HeartBeatCalculator
 
             study.Age = 30; //int.Parse(Console.ReadLine());
 
-            //user enters the sampling frequency in hertz
-
             //Console.WriteLine("Enter the sample frequency in hertz:");
 
             string frequencyString = "500"; //Console.ReadLine();
@@ -50,11 +48,13 @@ namespace HeartBeatCalculator
 
             double heartRate = EKGStudy.CalculateHeartRate(study.StudyData, frequency);
 
+            string diagnosis = EKGStudy.Diagnose(heartRate);
+
             //Add the new instance of EKGStudy to the list EKGStudies
 
-            //EKGStudies.Add(study);
+            EKGStudies.Add(study);
 
-            //Console.WriteLine($"There are {EKGStudies.Count} studies in memory"); //State the number of studies currently on the list
+            Console.WriteLine($"There are {EKGStudies.Count} studies in memory"); //State the number of studies currently on the list
 
             return heartRate;
           
