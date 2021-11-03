@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HeartBeatCalculator
 {
-    public class EKGStudy //this class should inherit info from patient.
+    public class EKGStudy
 
     {
         public string Name { get; set;  }
@@ -22,7 +22,11 @@ namespace HeartBeatCalculator
         public List<float> StudyData { get; set; }
 
         public int Frequency { get; set; }
-        
+
+        public int StudyID { get; set; }
+
+        public double Duration { get; set; }
+
         public EKGStudy()
 
         {
@@ -111,25 +115,25 @@ namespace HeartBeatCalculator
 
             if (heartrate <= 60)
             {
-                diagnosis = "bradycardia";
+                diagnosis = "Bradycardia (slow heart rate)";
             }
 
             else if (heartrate > 60 && heartrate < 100)
             {
-                diagnosis = "healthy";
+                diagnosis = "Healthy";
             }
             else
                  {
-                diagnosis = "tachycardia";
+                diagnosis = "Tachycardia (Elevated heart rate)";
                  }
 
             Console.WriteLine($"Your diagnosis is: {diagnosis}");
             return diagnosis;
         }
 
-
         [Obsolete]
 
+        //A method to visually display the input data
         public static void PlotECG() //when we create an object instance then it doesn't need to be static anymore?
 
         {

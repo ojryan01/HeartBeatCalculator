@@ -12,6 +12,7 @@ namespace HeartBeatCalculator
 
         public static List<EKGStudy> EKGStudies = new List<EKGStudy>();
 
+        //a method to ReadEKG, CalculateHeartRate, and Diagnose the patient
         public static double AnalyzeEKG()
         {
             
@@ -20,7 +21,7 @@ namespace HeartBeatCalculator
 
             //Console.WriteLine("Enter the patient name");
 
-            study.Name = "olivia";//Console.ReadLine();
+            study.Name = "olivia";//when finished testing, set back to: Console.ReadLine();
 
             //Console.WriteLine("Enter the patient age");
 
@@ -54,13 +55,21 @@ namespace HeartBeatCalculator
 
             EKGStudies.Add(study);
 
+            study.StudyID = EKGStudies.IndexOf(study);
+
+            Console.WriteLine($"Data saved to memory.");
+
+            Console.WriteLine($"Study ID: {study.Name}");
+
+            Console.WriteLine($"Study ID: {study.StudyID}");
+
             Console.WriteLine($"There are {EKGStudies.Count} studies in memory"); //State the number of studies currently on the list
 
             return heartRate;
           
         }
 
-        //a method to import data into list from CSV
+        //a method to import data into list from CSV:
 
         public static List<float> ReadEKG()
         {
@@ -89,6 +98,43 @@ namespace HeartBeatCalculator
             List<float> studyData = studyDataString.Select(x => float.Parse(x)).ToList(); // Convert list of strings to list of floats
 
             return studyData;
+        }
+       
+        //a method to view the name and study ID of each study in the List EKG Studies
+
+        public static void ViewStudies()
+        {
+            foreach (var EKGStudy in EKGStudies)
+            {
+                Console.WriteLine("*****************");
+                Console.WriteLine($"Name: {EKGStudy.Name}");
+                Console.WriteLine($"Study ID: {EKGStudies.IndexOf(EKGStudy)}");
+                Console.WriteLine("*****************");
+            }
+        }
+        
+        //Access a specific study by entering the study ID 
+        public static void ViewStudyDetailsByID()
+        {
+            Console.WriteLine("Enter the study ID");
+            var studyID = int.Parse(Console.ReadLine());
+
+            var studyDetails = from stud in EKGStudies
+                                       where stud.StudyID == studyID
+                                       select stud;
+
+
+            foreach (var detail in studyDetails)
+            {
+                Console.WriteLine("*******************************************");
+                Console.WriteLine($"Displaying data for Study: {detail.StudyID}");
+                Console.WriteLine($"Patient Name: {detail.Name}");
+                detail.StudyData = ReadEKG();
+                double heartRate = EKGStudy.CalculateHeartRate(detail.StudyData, detail.Frequency);
+                string diagnosis = EKGStudy.Diagnose(heartRate);
+                Console.WriteLine("*******************************************");
+            }
+
         }
     }
 }

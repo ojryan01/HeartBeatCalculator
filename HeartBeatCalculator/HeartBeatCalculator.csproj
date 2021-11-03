@@ -9,4 +9,8 @@
     <PackageReference Include="Spectre.Console" Version="0.42.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HeartBeatCalculator.Forms\HeartBeatCalculator.Forms.csproj" />
+  </ItemGroup>
+
 </Project>
