@@ -45,7 +45,7 @@ namespace HeartBeatCalculator
 
             for (int i = 0; i < studydata.Count; i++)
 
-            { if (i < frequency)
+            { if (i < (frequency / 2) )
 
                 {
                     float intsum = studydata.Take(i+1).Sum(); // sum of first i members of study data list
@@ -54,55 +54,47 @@ namespace HeartBeatCalculator
 
                     var currentvalue = studydata[i];
 
-                    double threshholdmodifier = 0.675;
+                    double threshholdmodifier = 1.3635;
 
                     var comparevalue = intavg + threshholdmodifier;
 
-                    if (currentvalue > comparevalue) //certain threshhold above the average is a peak TODO change study data list to two dimensional
+                    if (currentvalue > comparevalue ) //certain threshhold above the average is a peak 
                     {
                         pulseCounter += 1;
                     }
                 }
                 else
                 {
-                    float intsum = studydata.Skip(i - (frequency / 2)).Take(frequency).Sum();     //here we need to say, if i is greater than the samples in one second, take the sum of the surrounding one second (i - frequency/2)
+                    float intsum = studydata.Skip(i - (frequency / 4)).Take(frequency / 2).Sum();     //here we need to say, if i is greater than the samples in one second, take the sum of the surrounding one second (i - frequency/2)
                     float intavg = intsum / (frequency); // sum above divided by the number of samples in the interval
 
                     var currentvalue = studydata[i];
 
-                    double threshholdmodifier = 0.675;
+                    double threshholdmodifier = 1.96;
 
                     var comparevalue = intavg + threshholdmodifier;
 
-                    if (currentvalue > comparevalue) //certain threshhold above the average is a peak TODO change study data list to two dimensional
+                    if (currentvalue > comparevalue) //certain threshhold above the average is a peak 
                     {
                         pulseCounter += 1;
                     }
                 }
             }
-            ////simple zero crossing detection for a pure sine wave (going to need different algo for EKG)
-
-            //foreach (float i in studydata)
-            //{
-
-            //    if (i == 0) 
-            //    {
-            //        pulseCounter += 1;
-            //    }
-
-            //    Console.WriteLine(i);
-
-            //}
 
             var heartRate = 60 * pulseCounter / duration; //heartrate in beats per min
 
             Console.WriteLine("Reading ECG data...");
+            Console.WriteLine("************************************************");
 
             Console.WriteLine($"The study contains {studydata.Count} data points"); //verifying that all the data points got read into list
 
             Console.WriteLine($"The study duration is { duration } seconds"); //verifying that all the data points got read into list
 
+            Console.WriteLine($"{ pulseCounter } beats detected");
+
             Console.WriteLine($"The average heart rate is { heartRate } beats per minute");
+
+            Console.WriteLine("************************************************");
 
             return heartRate;
         }
@@ -129,42 +121,6 @@ namespace HeartBeatCalculator
 
             Console.WriteLine($"Your diagnosis is: {diagnosis}");
             return diagnosis;
-        }
-
-        [Obsolete]
-
-        //A method to visually display the input data
-        public static void PlotECG() //when we create an object instance then it doesn't need to be static anymore?
-
-        {
-            var canvas = new Canvas(300, 300);
-
-            // Draw some shapes
-            for (var i = 0; i < canvas.Width; i++)
-            {
-
-
-                var plotx = i;
-                var ploty = Math.Ceiling(50 + 50 * Math.Sin(i * (Math.PI / 180)));
-                Console.WriteLine($"{plotx}, {ploty}");
-
-                //straight line
-                canvas.SetPixel(plotx, (int)ploty, Color.Blue);
-
-                // Cross
-                //canvas.SetPixel(i, i, Color.White);
-                //canvas.SetPixel(canvas.Width - i - 1, i, Color.White);
-
-                // Border
-                canvas.SetPixel(i, 0, Color.Red);
-                canvas.SetPixel(0, i, Color.Green);
-                canvas.SetPixel(i, canvas.Height - 1, Color.Blue);
-                canvas.SetPixel(canvas.Width - 1, i, Color.Yellow);
-            }
-
-            AnsiConsole.Render(canvas);
-            Console.ReadLine();
-
         }
 
         }

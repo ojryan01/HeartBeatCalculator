@@ -51,8 +51,8 @@ namespace HeartBeatCalculator
                         Console.ReadLine();
                         break;
                     case "4":
-                        Console.WriteLine("Graphing ECG data...");
-                        EKGStudy.PlotECG();
+                        Console.WriteLine("Under Construction, try again later :)");                      
+                        //EKGStudy.PlotECG();
                         Console.WriteLine("Press enter to return to main menu");
                         Console.ReadLine();    
                         break; //graphically display the data

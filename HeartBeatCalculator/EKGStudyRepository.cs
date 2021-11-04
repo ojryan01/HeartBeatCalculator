@@ -19,17 +19,17 @@ namespace HeartBeatCalculator
             //instantiate a new instance of EKGStudy and collect some data for the properties
             var study = new EKGStudy();
 
-            //Console.WriteLine("Enter the patient name");
+            Console.WriteLine("Enter the patient name");
 
-            study.Name = "olivia";//when finished testing, set back to: Console.ReadLine();
+            study.Name = Console.ReadLine();
 
-            //Console.WriteLine("Enter the patient age");
+            //Console.WriteLine("Enter the patient age"); We can use this lated to get more granular with diagnosis
 
-            study.Age = 30; //int.Parse(Console.ReadLine());
+            //study.Age = 30; //int.Parse(Console.ReadLine());
 
-            //Console.WriteLine("Enter the sample frequency in hertz:");
+            Console.WriteLine("Enter the sample frequency in hertz:");
 
-            string frequencyString = "500"; //Console.ReadLine();
+            string frequencyString = Console.ReadLine();
 
             //some validation of user input (later we can make this it's own method or class)
 
@@ -49,7 +49,7 @@ namespace HeartBeatCalculator
 
             double heartRate = EKGStudy.CalculateHeartRate(study.StudyData, frequency);
 
-            string diagnosis = EKGStudy.Diagnose(heartRate);
+            // string diagnosis = EKGStudy.Diagnose(heartRate); this isn't quite working yet for all datasets
 
             //Add the new instance of EKGStudy to the list EKGStudies
 
@@ -59,11 +59,13 @@ namespace HeartBeatCalculator
 
             Console.WriteLine($"Data saved to memory.");
 
-            Console.WriteLine($"Study ID: {study.Name}");
+            Console.WriteLine($"Patient Name: {study.Name}");
 
             Console.WriteLine($"Study ID: {study.StudyID}");
 
             Console.WriteLine($"There are {EKGStudies.Count} studies in memory"); //State the number of studies currently on the list
+
+            Console.WriteLine("************************************************");
 
             return heartRate;
           
@@ -75,9 +77,9 @@ namespace HeartBeatCalculator
         {
             //user enters file path
 
-            //Console.WriteLine("Enter the file path:");
+            Console.WriteLine("Enter the file path:");
 
-            string path = "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\EKG10seconds500hz.csv"; //Console.ReadLine();
+            string path = Console.ReadLine();
 
             //logic to read the csv into a list of strings
 
@@ -131,7 +133,7 @@ namespace HeartBeatCalculator
                 Console.WriteLine($"Patient Name: {detail.Name}");
                 detail.StudyData = ReadEKG();
                 double heartRate = EKGStudy.CalculateHeartRate(detail.StudyData, detail.Frequency);
-                string diagnosis = EKGStudy.Diagnose(heartRate);
+                //string diagnosis = EKGStudy.Diagnose(heartRate); Under construction
                 Console.WriteLine("*******************************************");
             }
 

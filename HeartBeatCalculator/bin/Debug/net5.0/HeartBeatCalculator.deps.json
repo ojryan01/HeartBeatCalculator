@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "HeartBeatCalculator/1.0.0": {
         "dependencies": {
+          "HeartBeatCalculator.Forms": "1.0.0",
           "Spectre.Console": "0.42.0"
         },
         "runtime": {
@@ -32,6 +33,11 @@
             "fileVersion": "0.2.0.0"
           }
         }
+      },
+      "HeartBeatCalculator.Forms/1.0.0": {
+        "runtime": {
+          "HeartBeatCalculator.Forms.exe": {}
+        }
       }
     }
   },
@@ -54,6 +60,11 @@
       "sha512": "sha512-H7no2W0vuLJTvSPanlrijtG3UdJNVoeWBOp2a5dJFVa2tqSQuP5GfbJw1xAtPG9agRW310nFTUUsyPz5tuVIxw==",
       "path": "wcwidth/0.2.0",
       "hashPath": "wcwidth.0.2.0.nupkg.sha512"
+    },
+    "HeartBeatCalculator.Forms/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
