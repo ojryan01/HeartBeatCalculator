@@ -14,7 +14,7 @@ namespace HeartBeatCalculator
         
         public static List<EKGStudy> EKGStudies = new List<EKGStudy>();
 
-        //a method to ReadEKG, CalculateHeartRate, and Diagnose the patient
+        //a method to ReadEKG, CalculateHeartRate, and Diagnose the patient //TODO breakout add and write to file logic into separate methods
         public static double AnalyzeEKG()
         {
             
@@ -59,18 +59,48 @@ namespace HeartBeatCalculator
 
             study.StudyID = EKGStudies.IndexOf(study);
 
-            Console.WriteLine($"Data saved to memory.");
+            Console.WriteLine($"Data saved to memory:");
 
-            Console.WriteLine($"Study ID: {study.StudyID}");
+            Console.WriteLine($"     Study ID: {study.StudyID}");
 
-            Console.WriteLine($"Patient Name: {study.Name}");
-
-            Console.WriteLine($"There are {EKGStudies.Count} studies in memory"); //State the number of studies currently on the list
+            Console.WriteLine($"     Patient Name: {study.Name}");
 
             Console.WriteLine("************************************************");
 
-            return heartRate;
-          
+            Console.WriteLine($"There are {EKGStudies.Count} studies in memory."); //State the number of studies currently on the list
+
+            //Write data summary to file
+
+            string[] title = { "Summary of Data in Memory", "_________________________________" };
+            
+            // Set a variable to the Documents path.
+            string docPath =
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            // Write the title to a new file named "DataSummary.txt". The using statements indicates Disposable
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "DataSummary.txt")))
+            {
+                foreach (string line in title)
+                    outputFile.WriteLine(line);
+            }
+
+            //append the ID of each dataset stored to the DataSummaryFule
+            foreach (var EKGStudy in EKGStudies)
+            {
+                using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "DataSummary.txt"), true))
+                {
+                    // Create a string array with the lines of text
+
+                    string[] datasummary = { $"Study ID: {EKGStudy.StudyID}", $"Patient Name: {EKGStudy.Name}", "*************" };
+
+                    foreach (string line in datasummary)
+                    {
+                        outputFile.WriteLine(line);
+                    }
+                }
+            }
+
+            return heartRate;        
         }
 
         //a method to import data into list from CSV:
@@ -83,7 +113,7 @@ namespace HeartBeatCalculator
 
             string path = Console.ReadLine();
 
-            //logic to read the csv into a list of strings
+            //read the csv into a list of strings
 
             using (var reader = new StreamReader(File.OpenRead(path)))  //read the file. The using statment indicates disposable object declaration
             {

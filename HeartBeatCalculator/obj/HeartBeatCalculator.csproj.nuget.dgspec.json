@@ -4,16 +4,6 @@
     "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator\\HeartBeatCalculator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator.Forms\\HeartBeatCalculator.Forms.csproj": {
-      "restore": {
-        "projectUniqueName": "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator.Forms\\HeartBeatCalculator.Forms.csproj",
-        "projectName": "HeartBeatCalculator.Forms",
-        "projectPath": "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator.Forms\\HeartBeatCalculator.Forms.csproj"
-      },
-      "frameworks": {
-        "net472": {}
-      }
-    },
     "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator\\HeartBeatCalculator.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -37,11 +27,7 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {
-              "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator.Forms\\HeartBeatCalculator.Forms.csproj": {
-                "projectPath": "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator.Forms\\HeartBeatCalculator.Forms.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {

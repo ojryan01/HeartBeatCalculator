@@ -22,15 +22,6 @@
         "runtime": {
           "lib/netstandard2.0/Wcwidth.dll": {}
         }
-      },
-      "HeartBeatCalculator.Forms/1.0.0": {
-        "type": "project",
-        "compile": {
-          "bin/placeholder/HeartBeatCalculator.Forms.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/HeartBeatCalculator.Forms.dll": {}
-        }
       }
     }
   },
@@ -63,16 +54,10 @@
         "wcwidth.0.2.0.nupkg.sha512",
         "wcwidth.nuspec"
       ]
-    },
-    "HeartBeatCalculator.Forms/1.0.0": {
-      "type": "project",
-      "path": "../HeartBeatCalculator.Forms/HeartBeatCalculator.Forms.csproj",
-      "msbuildProject": "../HeartBeatCalculator.Forms/HeartBeatCalculator.Forms.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "HeartBeatCalculator.Forms >= 1.0.0",
       "Spectre.Console >= 0.42.0"
     ]
   },
@@ -102,11 +87,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator.Forms\\HeartBeatCalculator.Forms.csproj": {
-              "projectPath": "C:\\Users\\olivi\\source\\repos\\HeartBeatCalculator\\HeartBeatCalculator.Forms\\HeartBeatCalculator.Forms.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
