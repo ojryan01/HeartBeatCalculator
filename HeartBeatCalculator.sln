@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeartBeatCalculator", "Hear
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeartBeatCalculator.Tests", "Tests\HeartBeatCalculator.Tests\HeartBeatCalculator.Tests.csproj", "{A4AF198A-A715-41D0-AF13-566BA976B5C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeartBeatCalculator.Forms", "HeartBeatCalculator.Forms\HeartBeatCalculator.Forms.csproj", "{FA629346-2972-48DA-92C6-0ED42B5CAC47}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{A4AF198A-A715-41D0-AF13-566BA976B5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4AF198A-A715-41D0-AF13-566BA976B5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4AF198A-A715-41D0-AF13-566BA976B5C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA629346-2972-48DA-92C6-0ED42B5CAC47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA629346-2972-48DA-92C6-0ED42B5CAC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA629346-2972-48DA-92C6-0ED42B5CAC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA629346-2972-48DA-92C6-0ED42B5CAC47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

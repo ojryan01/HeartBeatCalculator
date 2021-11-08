@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace HeartBeatCalculator
 {
-    public class EKGStudyRepository
+    public class EKGStudyRepository : IDisposable
     {
 
+        public void Dispose() {}
+        
         public static List<EKGStudy> EKGStudies = new List<EKGStudy>();
 
         //a method to ReadEKG, CalculateHeartRate, and Diagnose the patient
@@ -59,9 +61,9 @@ namespace HeartBeatCalculator
 
             Console.WriteLine($"Data saved to memory.");
 
-            Console.WriteLine($"Patient Name: {study.Name}");
-
             Console.WriteLine($"Study ID: {study.StudyID}");
+
+            Console.WriteLine($"Patient Name: {study.Name}");
 
             Console.WriteLine($"There are {EKGStudies.Count} studies in memory"); //State the number of studies currently on the list
 
@@ -83,23 +85,24 @@ namespace HeartBeatCalculator
 
             //logic to read the csv into a list of strings
 
-            var reader = new StreamReader(File.OpenRead(path)); //read the file
-
-            List<string> studyDataString = new List<string>();
-
-            while (!reader.EndOfStream) //until we get to end of file
+            using (var reader = new StreamReader(File.OpenRead(path)))  //read the file. The using statment indicates disposable object declaration
             {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                foreach (var item in values)
+                List<string> studyDataString = new List<string>();
+
+                while (!reader.EndOfStream) //until we get to end of file
                 {
-                    studyDataString.Add(item);
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    foreach (var item in values)
+                    {
+                        studyDataString.Add(item);
+                    }
                 }
+
+                List<float> studyData = studyDataString.Select(x => float.Parse(x)).ToList(); // Convert list of strings to list of floats
+
+                return studyData;
             }
-
-            List<float> studyData = studyDataString.Select(x => float.Parse(x)).ToList(); // Convert list of strings to list of floats
-
-            return studyData;
         }
        
         //a method to view the name and study ID of each study in the List EKG Studies
