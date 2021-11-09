@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 namespace HeartBeatCalculator
 {
+    //This class is currently unused. May use it later when we want to track patients separately from studies
+    
     public class Patient //classes are private by default so we need to make them publically accessible
     {
 
