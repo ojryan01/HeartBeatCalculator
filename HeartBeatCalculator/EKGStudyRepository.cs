@@ -10,14 +10,15 @@ namespace HeartBeatCalculator
     public class EKGStudyRepository : IDisposable
     {
 
-        public void Dispose() {}
-        
+        public void Dispose() { }
+
         public static List<EKGStudy> EKGStudies = new List<EKGStudy>();
+
 
         //a method to ReadEKG, CalculateHeartRate, and Diagnose the patient //TODO breakout add and write to file logic into separate methods
         public static double AnalyzeEKG()
         {
-            
+
             //instantiate a new instance of EKGStudy and collect some data for the properties
             var study = new EKGStudy();
 
@@ -33,23 +34,15 @@ namespace HeartBeatCalculator
 
             string frequencyString = Console.ReadLine();
 
-            //some validation of user input (later we can make this it's own method or class)
+            //validate the frequency input
 
-            if (string.IsNullOrWhiteSpace(frequencyString))
-                throw new ArgumentException("Enter the sample frequency in hertz");
-
-            var success = int.TryParse(frequencyString, out int frequency);
-
-            if (!success || frequency < 0)
-                throw new ArgumentException("Frequency must be > 0");
-
-            study.Frequency = frequency;
+            study.Frequency = Validate(frequencyString);
 
             // use the ReadEKG method to let the user enter the study data and assign it to the StudyData property
 
             study.StudyData = ReadEKG();
 
-            double heartRate = EKGStudy.CalculateHeartRate(study.StudyData, frequency);
+            double heartRate = EKGStudy.CalculateHeartRate(study.StudyData, study.Frequency);
 
             // string diagnosis = EKGStudy.Diagnose(heartRate); this isn't quite working yet for all datasets
 
@@ -72,7 +65,7 @@ namespace HeartBeatCalculator
             //Write data summary to file
 
             string[] title = { "Summary of Data in Memory", "_________________________________" };
-            
+
             // Set a variable to the Documents path.
             string docPath =
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -100,9 +93,27 @@ namespace HeartBeatCalculator
                 }
             }
 
-            return heartRate;        
+            return heartRate;
         }
 
+        //a method to validate that a positive integer value is provided for the sample frequency
+        public static int Validate(string frequencyString)
+            {
+
+            if (string.IsNullOrWhiteSpace(frequencyString))
+                throw new ArgumentException("Enter the sample frequency in hertz");
+
+            var success = int.TryParse(frequencyString, out int frequency);
+
+            if (!success)
+                throw new ArgumentException("Frequency must be an integer value");
+            
+            else if (frequency < 0)
+                throw new ArgumentException("Frequency must be > 0");
+
+            return frequency;
+        }
+        
         //a method to import data into list from CSV:
 
         public static List<float> ReadEKG()
