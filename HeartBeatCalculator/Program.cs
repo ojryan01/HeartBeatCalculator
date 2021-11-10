@@ -36,7 +36,7 @@ namespace HeartBeatCalculator
                 switch (userSelection)
                 {
                     case "1":
-                        EKGStudyRepository.AnalyzeEKG(); //Load, analyze and store ECG data from a csv file
+                        EKGStudy.AnalyzeEKG(); //Load, analyze and store ECG data from a csv file
                         Console.WriteLine("Press enter to return to main menu");
                         Console.ReadLine();
                         break;

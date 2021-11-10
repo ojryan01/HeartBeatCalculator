@@ -33,6 +33,25 @@ namespace HeartBeatCalculator
 
         }
 
+        //a combined method that calls functions to:
+        //ReadEKG, AddEKG to repository, CalculateHeartRate, and Diagnose the patient 
+        public static double AnalyzeEKG()
+        {
+            // use the ReadEKG method to let the user enter the study data and assign it to the StudyData property
+
+            EKGStudy study = EKGStudyRepository.ReadEKG(); //C:\Users\olivi\source\repos\HeartBeatCalculator\Test Data\EKG Sample Data Healthy 500hz.csv
+
+            //Add the new instance of EKGStudy to the list EKGStudies
+
+            EKGStudyRepository.AddEKG(study);
+
+            double heartRate = EKGStudy.CalculateHeartRate(study.StudyData, study.Frequency);
+
+            // string diagnosis = EKGStudy.Diagnose(heartRate); this isn't quite working yet for all datasets
+
+            return heartRate;
+        }
+
         //A method to calculate the heart rate for a given reading
 
         public static double CalculateHeartRate( List<float> studydata, int frequency )

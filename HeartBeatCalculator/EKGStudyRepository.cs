@@ -14,40 +14,9 @@ namespace HeartBeatCalculator
 
         public static List<EKGStudy> EKGStudies = new List<EKGStudy>();
 
-
-        //a method to ReadEKG, CalculateHeartRate, and Diagnose the patient //TODO breakout add and write to file logic into separate methods
-        public static double AnalyzeEKG()
+        //Add an EKGStudy to the study repository list
+        public static void AddEKG(EKGStudy study)
         {
-
-            //instantiate a new instance of EKGStudy and collect some data for the properties
-            var study = new EKGStudy();
-
-            Console.WriteLine("Enter the patient name");
-
-            study.Name = Console.ReadLine();
-
-            //Console.WriteLine("Enter the patient age"); We can use this lated to get more granular with diagnosis
-
-            //study.Age = 30; //int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter the sample frequency in hertz:");
-
-            string frequencyString = Console.ReadLine();
-
-            //validate the frequency input
-
-            study.Frequency = Validate(frequencyString);
-
-            // use the ReadEKG method to let the user enter the study data and assign it to the StudyData property
-
-            study.StudyData = ReadEKG();
-
-            double heartRate = EKGStudy.CalculateHeartRate(study.StudyData, study.Frequency);
-
-            // string diagnosis = EKGStudy.Diagnose(heartRate); this isn't quite working yet for all datasets
-
-            //Add the new instance of EKGStudy to the list EKGStudies
-
             EKGStudies.Add(study);
 
             study.StudyID = EKGStudies.IndexOf(study);
@@ -77,7 +46,7 @@ namespace HeartBeatCalculator
                     outputFile.WriteLine(line);
             }
 
-            //append the ID of each dataset stored to the DataSummaryFule
+            //append the ID of each dataset stored to the DataSummaryFile
             foreach (var EKGStudy in EKGStudies)
             {
                 using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "DataSummary.txt"), true))
@@ -92,32 +61,31 @@ namespace HeartBeatCalculator
                     }
                 }
             }
-
-            return heartRate;
         }
 
-        //a method to validate that a positive integer value is provided for the sample frequency
-        public static int Validate(string frequencyString)
-            {
-
-            if (string.IsNullOrWhiteSpace(frequencyString))
-                throw new ArgumentException("Enter the sample frequency in hertz");
-
-            var success = int.TryParse(frequencyString, out int frequency);
-
-            if (!success)
-                throw new ArgumentException("Frequency must be an integer value");
-            
-            else if (frequency < 0)
-                throw new ArgumentException("Frequency must be > 0");
-
-            return frequency;
-        }
-        
         //a method to import data into list from CSV:
 
-        public static List<float> ReadEKG()
+        public static EKGStudy ReadEKG()
         {
+            //instantiate a new instance of EKGStudy and collect some data for the properties
+            var study = new EKGStudy();
+
+            Console.WriteLine("Enter the patient name");
+
+            study.Name = Console.ReadLine();
+
+            //Console.WriteLine("Enter the patient age"); We can use this lated to get more granular with diagnosis
+
+            //study.Age = 30; //int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter the sample frequency in hertz:");
+
+            string frequencyString = Console.ReadLine();
+
+            //validate the frequency input
+
+            study.Frequency = Validate(frequencyString);
+
             //user enters file path
 
             Console.WriteLine("Enter the file path:");
@@ -140,9 +108,9 @@ namespace HeartBeatCalculator
                     }
                 }
 
-                List<float> studyData = studyDataString.Select(x => float.Parse(x)).ToList(); // Convert list of strings to list of floats
+                study.StudyData = studyDataString.Select(x => float.Parse(x)).ToList(); // Convert list of strings to list of floats
 
-                return studyData;
+                return study;
             }
         }
        
@@ -175,12 +143,31 @@ namespace HeartBeatCalculator
                 Console.WriteLine("*******************************************");
                 Console.WriteLine($"Displaying data for Study: {detail.StudyID}");
                 Console.WriteLine($"Patient Name: {detail.Name}");
-                detail.StudyData = ReadEKG();
+                detail.StudyData = ReadEKG().StudyData;
                 double heartRate = EKGStudy.CalculateHeartRate(detail.StudyData, detail.Frequency);
                 //string diagnosis = EKGStudy.Diagnose(heartRate); Under construction
                 Console.WriteLine("*******************************************");
             }
 
         }
+
+        //a method to validate that a positive integer value is provided for the sample frequency
+        public static int Validate(string frequencyString)
+        {
+
+            if (string.IsNullOrWhiteSpace(frequencyString))
+                throw new ArgumentException("Enter the sample frequency in hertz");
+
+            var success = int.TryParse(frequencyString, out int frequency);
+
+            if (!success)
+                throw new ArgumentException("Frequency must be an integer value");
+
+            else if (frequency < 0)
+                throw new ArgumentException("Frequency must be > 0");
+
+            return frequency;
+        }
+
     }
 }
