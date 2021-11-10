@@ -12,10 +12,10 @@ namespace HeartBeatCalculator
 
         public void Dispose() { }
 
-        public static List<EKGStudy> EKGStudies = new List<EKGStudy>();
+        private List<EKGStudy> EKGStudies = new List<EKGStudy>();
 
         //Add an EKGStudy to the study repository list
-        public static void AddEKG(EKGStudy study)
+        public void AddEKG(EKGStudy study)
         {
             EKGStudies.Add(study);
 
@@ -65,7 +65,7 @@ namespace HeartBeatCalculator
 
         //a method to import data into list from CSV:
 
-        public static EKGStudy ReadEKG()
+        public EKGStudy ReadEKG()
         {
             //instantiate a new instance of EKGStudy and collect some data for the properties
             var study = new EKGStudy();
@@ -84,7 +84,7 @@ namespace HeartBeatCalculator
 
             //validate the frequency input
 
-            study.Frequency = Validate(frequencyString);
+            study.Frequency = EKGStudy.Validate(frequencyString);
 
             //user enters file path
 
@@ -116,7 +116,7 @@ namespace HeartBeatCalculator
        
         //a method to view the name and study ID of each study in the List EKG Studies
 
-        public static void ViewStudies()
+        public void ViewStudies()
         {
             foreach (var EKGStudy in EKGStudies)
             {
@@ -128,7 +128,7 @@ namespace HeartBeatCalculator
         }
         
         //Access a specific study by entering the study ID 
-        public static void ViewStudyDetailsByID()
+        public void ViewStudyDetailsByID()
         {
             Console.WriteLine("Enter the study ID");
             var studyID = int.Parse(Console.ReadLine());
@@ -151,23 +151,6 @@ namespace HeartBeatCalculator
 
         }
 
-        //a method to validate that a positive integer value is provided for the sample frequency
-        public static int Validate(string frequencyString)
-        {
-
-            if (string.IsNullOrWhiteSpace(frequencyString))
-                throw new ArgumentException("Enter the sample frequency in hertz");
-
-            var success = int.TryParse(frequencyString, out int frequency);
-
-            if (!success)
-                throw new ArgumentException("Frequency must be an integer value");
-
-            else if (frequency < 0)
-                throw new ArgumentException("Frequency must be > 0");
-
-            return frequency;
-        }
-
+        
     }
 }

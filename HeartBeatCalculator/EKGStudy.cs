@@ -1,11 +1,6 @@
-﻿using Spectre.Console;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace HeartBeatCalculator
@@ -142,7 +137,25 @@ namespace HeartBeatCalculator
             return diagnosis;
         }
 
+        //a method to validate that a positive integer value is provided for the sample frequency
+        public static int Validate(string frequencyString)
+        {
+
+            if (string.IsNullOrWhiteSpace(frequencyString))
+                throw new ArgumentException("Enter the sample frequency in hertz");
+
+            var success = int.TryParse(frequencyString, out int frequency);
+
+            if (!success)
+                throw new ArgumentException("Frequency must be an integer value");
+
+            else if (frequency < 0)
+                throw new ArgumentException("Frequency must be > 0");
+
+            return frequency;
         }
+
     }
+}
 
 
