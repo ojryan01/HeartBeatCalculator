@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace HeartBeatCalculator
 {
-    public class EKGStudyRepository : IDisposable
+    public class EKGStudyRepository
     {
-
-        public void Dispose() { }
 
         private List<EKGStudy> EKGStudies = new List<EKGStudy>();
 
-        //Add an EKGStudy to the study repository list
+        
+        //Add an imported EKGStudy to the study repository list and write a summary of stored data to a local file
         public void AddEKG(EKGStudy study)
         {
             EKGStudies.Add(study);
@@ -65,54 +64,54 @@ namespace HeartBeatCalculator
 
         //a method to import data into list from CSV:
 
-        public EKGStudy ReadEKG()
-        {
-            //instantiate a new instance of EKGStudy and collect some data for the properties
-            var study = new EKGStudy();
+        //public static EKGStudy ReadEKG()
+        //{
+            ////instantiate a new instance of EKGStudy and collect some data for the properties
+            //var study = new EKGStudy();
 
-            Console.WriteLine("Enter the patient name");
+            //Console.WriteLine("Enter the patient name");
 
-            study.Name = Console.ReadLine();
+            //study.Name = Console.ReadLine();
 
-            //Console.WriteLine("Enter the patient age"); We can use this lated to get more granular with diagnosis
+            ////Console.WriteLine("Enter the patient age"); We can use this lated to get more granular with diagnosis
 
-            //study.Age = 30; //int.Parse(Console.ReadLine());
+            ////study.Age = 30; //int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter the sample frequency in hertz:");
+            //Console.WriteLine("Enter the sample frequency in hertz:");
 
-            string frequencyString = Console.ReadLine();
+            //string frequencyString = Console.ReadLine();
 
-            //validate the frequency input
+            ////validate the frequency input
 
-            study.Frequency = EKGStudy.Validate(frequencyString);
+            //study.Frequency = EKGStudy.Validate(frequencyString);
 
-            //user enters file path
+            ////user enters file path
 
-            Console.WriteLine("Enter the file path:");
+            //Console.WriteLine("Enter the file path:");
 
-            string path = Console.ReadLine();
+            //string path = Console.ReadLine();
 
-            //read the csv into a list of strings
+            ////read the csv into a list of strings
 
-            using (var reader = new StreamReader(File.OpenRead(path)))  //read the file. The using statment indicates disposable object declaration
-            {
-                List<string> studyDataString = new List<string>();
+            //using (var reader = new StreamReader(File.OpenRead(path)))  //read the file. The using statment indicates disposable object declaration
+            //{
+            //    List<string> studyDataString = new List<string>();
 
-                while (!reader.EndOfStream) //until we get to end of file
-                {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                    foreach (var item in values)
-                    {
-                        studyDataString.Add(item);
-                    }
-                }
+            //    while (!reader.EndOfStream) //until we get to end of file
+            //    {
+            //        var line = reader.ReadLine();
+            //        var values = line.Split(',');
+            //        foreach (var item in values)
+            //        {
+            //            studyDataString.Add(item);
+            //        }
+            //    }
 
-                study.StudyData = studyDataString.Select(x => float.Parse(x)).ToList(); // Convert list of strings to list of floats
+            //    study.StudyData = studyDataString.Select(x => float.Parse(x)).ToList(); // Convert list of strings to list of floats
 
-                return study;
-            }
-        }
+            //    return study;
+        //    }
+        //}
        
         //a method to view the name and study ID of each study in the List EKG Studies
 
@@ -141,10 +140,10 @@ namespace HeartBeatCalculator
             foreach (var detail in studyDetails)
             {
                 Console.WriteLine("*******************************************");
-                Console.WriteLine($"Displaying data for Study: {detail.StudyID}");
+                 Console.WriteLine($"Displaying data for Study: {detail.StudyID}");
                 Console.WriteLine($"Patient Name: {detail.Name}");
-                detail.StudyData = ReadEKG().StudyData;
-                double heartRate = EKGStudy.CalculateHeartRate(detail.StudyData, detail.Frequency);
+                detail.StudyData = detail.StudyData;
+                double heartRate = detail.CalculateHeartRate();
                 //string diagnosis = EKGStudy.Diagnose(heartRate); Under construction
                 Console.WriteLine("*******************************************");
             }

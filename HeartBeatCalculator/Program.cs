@@ -7,7 +7,11 @@ namespace HeartBeatCalculator
     {
         [Obsolete]
         static void Main(string[] args)
-        {        
+        {
+            //Adding and instance of the EKGStudyRepository
+
+            EKGStudyRepository repository = new EKGStudyRepository();
+
             var repeat = true;
 
             while (repeat)
@@ -36,17 +40,19 @@ namespace HeartBeatCalculator
                 switch (userSelection)
                 {
                     case "1":
-                        EKGStudy.AnalyzeEKG(); //Load, analyze and store ECG data from a csv file
+                        //instantiate a new instance of EKGStudy and collect some data for the properties
+                        EKGStudy study = new EKGStudy();
+                        repository.AddEKG(study);
                         Console.WriteLine("Press enter to return to main menu");
                         Console.ReadLine();
                         break;
                     case "2":
-                        EKGStudyRepository.ViewStudies();
+                        repository.ViewStudies();
                         Console.WriteLine("Press enter to return to main menu");
                         Console.ReadLine();
                         break;
                     case "3":
-                        EKGStudyRepository.ViewStudyDetailsByID();
+                        repository.ViewStudyDetailsByID();
                         Console.WriteLine("Press enter to return to main menu");
                         Console.ReadLine();
                         break;
