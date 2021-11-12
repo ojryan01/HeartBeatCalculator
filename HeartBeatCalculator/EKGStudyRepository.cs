@@ -61,58 +61,7 @@ namespace HeartBeatCalculator
                 }
             }
         }
-
-        //a method to import data into list from CSV:
-
-        //public static EKGStudy ReadEKG()
-        //{
-            ////instantiate a new instance of EKGStudy and collect some data for the properties
-            //var study = new EKGStudy();
-
-            //Console.WriteLine("Enter the patient name");
-
-            //study.Name = Console.ReadLine();
-
-            ////Console.WriteLine("Enter the patient age"); We can use this lated to get more granular with diagnosis
-
-            ////study.Age = 30; //int.Parse(Console.ReadLine());
-
-            //Console.WriteLine("Enter the sample frequency in hertz:");
-
-            //string frequencyString = Console.ReadLine();
-
-            ////validate the frequency input
-
-            //study.Frequency = EKGStudy.Validate(frequencyString);
-
-            ////user enters file path
-
-            //Console.WriteLine("Enter the file path:");
-
-            //string path = Console.ReadLine();
-
-            ////read the csv into a list of strings
-
-            //using (var reader = new StreamReader(File.OpenRead(path)))  //read the file. The using statment indicates disposable object declaration
-            //{
-            //    List<string> studyDataString = new List<string>();
-
-            //    while (!reader.EndOfStream) //until we get to end of file
-            //    {
-            //        var line = reader.ReadLine();
-            //        var values = line.Split(',');
-            //        foreach (var item in values)
-            //        {
-            //            studyDataString.Add(item);
-            //        }
-            //    }
-
-            //    study.StudyData = studyDataString.Select(x => float.Parse(x)).ToList(); // Convert list of strings to list of floats
-
-            //    return study;
-        //    }
-        //}
-       
+    
         //a method to view the name and study ID of each study in the List EKG Studies
 
         public void ViewStudies()
