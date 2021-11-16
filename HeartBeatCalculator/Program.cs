@@ -40,7 +40,7 @@ namespace HeartBeatCalculator
                 switch (userSelection)
                 {
                     case "1":
-                        //instantiate a new instance of EKGStudy and collect some data for the properties
+                        //instantiate a new instance of EKGStudy and collect some data for the properties   
                         EKGStudy study = new EKGStudy();
                         repository.AddEKG(study);
                         Console.WriteLine("Press enter to return to main menu");

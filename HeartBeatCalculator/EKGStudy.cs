@@ -27,13 +27,12 @@ namespace HeartBeatCalculator
 
         {
             //instantiate a new instance of EKGStudy and collect some data for the properties
-            //var study = new EKGStudy();
 
             Console.WriteLine("Enter the patient name");
 
             Name = Console.ReadLine();
 
-            //Console.WriteLine("Enter the patient age"); We can use this lated to get more granular with diagnosis
+            //Console.WriteLine("Enter the patient age"); We can use this later to get more granular with diagnosis
 
             //study.Age = 30; //int.Parse(Console.ReadLine());
 
@@ -77,12 +76,7 @@ namespace HeartBeatCalculator
             //ReadEKG, AddEKG to repository, CalculateHeartRate, and Diagnose the patient 
             public double AnalyzeEKG()
             {
-                // use the ReadEKG method to let the user enter the study data and assign it to the StudyData property
-
-                //C:\Users\olivi\source\repos\HeartBeatCalculator\Test Data\EKG Sample Data Healthy 500hz.csv
-
-                //Add the new instance of EKGStudy to the list EKGStudies
-
+             
                 double heartRate = CalculateHeartRate();
 
                 // string diagnosis = EKGStudy.Diagnose(heartRate); this isn't quite working yet for all datasets
