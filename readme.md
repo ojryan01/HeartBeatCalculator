@@ -60,24 +60,37 @@ _EKGStudy_ Methods
 * Diagnose() - Currently commented out, compares the calculated average heartrate against values to determine if the heartrate is in a healthy or pathologic state.
 
 _EKGStudyRepository_ Methods
-* AddEKG() - Adds 
-* ViewStudies()
-* ViewStudyDetailsByID()
+* AddEKG() - Adds an object of EKGStudy to the EKGStudyRepository list, assigns a unique ID to the data set and prints a summary of the stored data to a locally saved text file.
+* ViewStudies() - View a summary of all the data imported during the session. 
+* ViewStudyDetailsByID() - Prompts the user to enter a study ID and looks up the data in the EKGStudyRepository.
 
 __IMPLEMENT 3 FEATURES FROM A GIVEN LIST__
 Requirement Text: _"Choose at least 3 items on the Features List below and implement them in your project"_
 
-* Feature 1: "Implement a “master loop” console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program"
+__Feature 1:__ _"Implement a “master loop” console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program"_
 
-* Feature 2: "Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program"
+In Program.cs, the user is able to chose from 3 options which call one of the methods described above. There is also a "Help" option which describes the usage of each option and an "Exit" option to break from the master loop and close the program.
 
-* Feature 3: "Implement a log that records errors, invalid inputs, or other important events and writes them to a text file"
+__Feature 2:__ _"Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program""
+
+In Program.CS, a list of EKGStudy is created by calling the EKGStudyRepository() constructor method. When AddEKG() is called, a new data set with patient info is added to the list. Data is retrieved by calling the ViewStudyDetailsbyID() method.
+
+The individual EKG data points are also stored as a list of type float and data is retrieved for the peak detection algorithm.
+
+__Feature 3:__ _"Implement a log that records errors, invalid inputs, or other important events and writes them to a text file"_
+
+In the AddEKG() method, after the data is added to the EKGStudyRepositoryList, a summary of the list is printed to a text file DataSummary saved in the local Documents folder.
+
 
 __ADDITIONAL FEATURES__
 
-* Feature 4: "Read data from an external file, such as text, JSON, CSV, etc and use that data in your application"
+__Feature 4:__ _"Read data from an external file, such as text, JSON, CSV, etc and use that data in your application"_
 
-* Feature 5: "Use a LINQ query to retrieve information from a data structure (such as a list or array) or file"
+EKG data is read from CSV format in the EKGStudy() constructor method. The data must be in a single column with no headers. 
+
+__Feature 5:__ _"Use a LINQ query to retrieve information from a data structure (such as a list or array) or file"_
+
+LINQ is used both to access intervals for the moving average heart rate calculation in CalculateHeartRate() and to access studies from the EKGStudyRepository list in ViewStudyDetailsByID().
 
 ---------------------------------------------------------------
 SPECIAL INSTRUCTIONS

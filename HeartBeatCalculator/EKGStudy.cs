@@ -23,6 +23,8 @@ namespace HeartBeatCalculator
 
         public double Duration { get; set; }
 
+        const double THRESHOLD_MODIFIER = 1.3635;
+
         public EKGStudy()
 
         {
@@ -99,33 +101,29 @@ namespace HeartBeatCalculator
                 { if (i < (Frequency / 2))
 
                     {
-                        float intsum = StudyData.Take(i + 1).Sum(); // sum of first i members of study data list
+                        float intSum = StudyData.Take(i + 1).Sum(); // sum of first i members of study data list
 
-                        float intavg = intsum / (i + 1); // sum above divided by the number of samples so far
+                        float intAvg = intSum / (i + 1); // sum above divided by the number of samples so far, i.e the average value of the interval
 
-                        var currentvalue = StudyData[i];
+                        var currentValue = StudyData[i];
 
-                        double threshholdmodifier = 1.3635;
+                        var compareValue = intAvg + THRESHOLD_MODIFIER;
 
-                        var comparevalue = intavg + threshholdmodifier;
-
-                        if (currentvalue > comparevalue) //certain threshhold above the average is a peak 
+                        if (currentValue > compareValue) //certain threshhold above the average is a peak 
                         {
                             pulseCounter += 1;
                         }
                     }
                     else
                     {
-                        float intsum = StudyData.Skip(i - (Frequency / 4)).Take(Frequency / 2).Sum();     //here we need to say, if i is greater than the samples in one second, take the sum of the surrounding one second (i - frequency/2)
-                        float intavg = intsum / (Frequency); // sum above divided by the number of samples in the interval
+                        float intSum = StudyData.Skip(i - (Frequency / 4)).Take(Frequency / 2).Sum();     //here we need to say, if i is greater than the samples in one second, take the sum of the surrounding one second (i - frequency/2)
+                        float intAvg = intSum / (Frequency); // sum above divided by the number of samples in the interval
 
-                        var currentvalue = StudyData[i];
+                        var currentValue = StudyData[i];
 
-                        double threshholdmodifier = 1.96;
+                        var compareValue = intAvg + THRESHOLD_MODIFIER;
 
-                        var comparevalue = intavg + threshholdmodifier;
-
-                        if (currentvalue > comparevalue) //certain threshhold above the average is a peak 
+                        if (currentValue > compareValue) //certain threshhold above the average is a peak 
                         {
                             pulseCounter += 1;
                         }

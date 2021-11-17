@@ -31,9 +31,8 @@ namespace HeartBeatCalculator
                 Console.WriteLine("1. Import data");
                 Console.WriteLine("2. View stored data");
                 Console.WriteLine("3. Retrieve stored data by Study ID");
-                Console.WriteLine("4. Graph ECG");
-                Console.WriteLine("5. Help");
-                Console.WriteLine("6. Quit");
+                Console.WriteLine("4. Help");
+                Console.WriteLine("5. Quit");
 
                 userSelection = Console.ReadLine();
                 
@@ -57,20 +56,14 @@ namespace HeartBeatCalculator
                         Console.ReadLine();
                         break;
                     case "4":
-                        Console.WriteLine("Under Construction, try again later :)");                      
-                        //EKGStudy.PlotECG();
-                        Console.WriteLine("Press enter to return to main menu");
-                        Console.ReadLine();    
-                        break; //graphically display the data
-                    case "5":
                         Console.WriteLine("Commands:");
                         Console.WriteLine("1. Import data: Enter patient details and provide a local file path to the data set. File format should be " +
                             "in CSV format. Only Y values should be provided (i.e EKG data in milivolts). Time data is interpolated from the user provided study frequency");
                         Console.WriteLine("2. View stored data: This option displays the top level information for each dataset stored in memory (Patient name and study ID). To see the full data for a given data set, use Option 3. ");
                         Console.WriteLine("3. Retrieve stored data by Study ID: View full details for a stored datasets by entering the study ID. Use Option 2 to view the stored datasets or Option 1 to import a new dataset");
                         Console.ReadLine();
-                        break; //graphically display the data
-                    case "6":
+                        break;
+                    case "5":
                         repeat = false;
                         break;
                 }

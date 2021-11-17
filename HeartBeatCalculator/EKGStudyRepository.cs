@@ -12,7 +12,6 @@ namespace HeartBeatCalculator
 
         private List<EKGStudy> EKGStudies = new List<EKGStudy>();
 
-        
         //Add an imported EKGStudy to the study repository list and write a summary of stored data to a local file
         public void AddEKG(EKGStudy study)
         {
@@ -27,8 +26,6 @@ namespace HeartBeatCalculator
             Console.WriteLine($"     Patient Name: {study.Name}");
 
             Console.WriteLine("************************************************");
-
-            Console.WriteLine($"There are {EKGStudies.Count} studies in memory."); //State the number of studies currently on the list
 
             //Write data summary to file
 
@@ -60,6 +57,8 @@ namespace HeartBeatCalculator
                     }
                 }
             }
+
+            Console.WriteLine($"There are {EKGStudies.Count} studies in memory. Data summary log file is stored in your local Documents folder");
         }
     
         //a method to view the name and study ID of each study in the List EKG Studies
