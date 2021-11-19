@@ -16,9 +16,7 @@ PROJECT DESCRIPTION
 
 This goal of this project is to fulfill the requirements for Code Louisville's C#/.NET programming course. This is my first attempt at using this language to create a functional console application.
 
-I wanted to draw on my background in biomedical engineering for this project. EKG or Electrocardiogram is a well known diagnostic tool for measuring and diagnosing cardiac function. The intended use of the 
-
-application is to read, store and analyze ECG data to provide key statistics and diagnoses to the user. 
+I wanted to draw on my background in biomedical engineering for this project. EKG or Electrocardiogram is a well known diagnostic tool for measuring and diagnosing cardiac function. The intended use of the application is to read, store and analyze ECG data to provide key statistics and diagnoses to the user. 
 
 I'm tracking my project backlog using Trello. Progress on the project can be viewed here: https://trello.com/b/Natw2Dcq/code-louisville-project-c
 
