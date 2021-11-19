@@ -99,11 +99,18 @@ There is a folder of test CSV data sets in the repo that you can import. You can
 
 For now, you can plot the data sets in excel to verify it caught the correct number of heartbeats.
 
-
 The program currently only works with the sample file "_EKG Sample Data - Healthy 360 HZ.csv"_. 
 
 ---------------------------------------------------------------
 FUTURE DEVELOPMENT AND LIMITATIONS
 ----------------------------------
+
+1. One of the biggest challenges for this project was finding clean sample data to analyze in CSV format. A large bank of data exists at https://archive.physionet.org/cgi-bin/atm/ATM but without filtering the signals contain artifacts such as noise, baseline drift, etc. This makes threshold based peak detection difficult and essentially requires a different threshold value to be set using trial and error for each data set. In the future, I'd like to further refine the peak detection by filtering/smoothing the datasets so that the peak detection works for any EKG dataset.
+
+2. Further input validation and error logging - Currently the only validated input is the Frequency value. Further validation could be implemented on the file path input as well as format of the CSV. The specific validation messages should be exported to a log file. 
+
+3. Unit testing - Unit testing was covered as part of this course but due to time limitations I wasn't able to implement them as part of the MVP. In future projects I'd also like to practice test-driven development by fully writing out the tests and acceptance criteria before starting development.
+
+4. Graphical display of data - I initially began using Winforms to plot the EKG data but a mentor recommended I try a Razor page app as a front end for the application. 
 
 ----------------------------------------------------------------
